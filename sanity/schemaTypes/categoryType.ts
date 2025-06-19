@@ -6,34 +6,13 @@ export const categoryType = defineType({
   title: "Category",
   type: "document",
   icon: TagIcon,
-  // 👇 THÊM CẤU HÌNH SẮP XẾP TẠI ĐÂY
-  orderings: [
-    {
-      title: "Manual Order", // Tên của tùy chọn sắp xếp
-      name: "manualOrder",
-      by: [{ field: "orderRank", direction: "asc" }], // Sắp xếp theo trường 'orderRank' tăng dần
-    },
-    {
-      title: "Alphabetical",
-      name: "alphabeticalOrder",
-      by: [{ field: "title", direction: "asc" }],
-    },
-  ],
+  
   fields: [
     defineField({
       name: "title",
       title: "Title",
       type: "string",
-      validation: (Rule) => Rule.required(), // Nên có validation
-    }),
-    // 👇 THÊM TRƯỜNG "THỨ TỰ" MỚI
-    defineField({
-      name: "orderRank",
-      title: "Order Rank",
-      type: "number",
-      description:
-        "A number to manually order the categories. Lower numbers appear first.",
-      validation: (Rule) => Rule.required().integer().positive(), // Bắt buộc nhập, phải là số nguyên dương
+      validation: (Rule) => Rule.required(), 
     }),
     defineField({
       name: "slug",
@@ -48,37 +27,17 @@ export const categoryType = defineType({
       type: "text",
     }),
     defineField({
-      name: "subCategories",
-      title: "Sub-Categories",
+      name: "images",
+      title: "Product Images",
       type: "array",
-      of: [
-        {
-          type: "reference",
-          to: [{ type: "category" }],
-          options: {
-            // Lọc để không cho phép chọn chính nó làm sub-category
-            filter: ({ document }) => {
-              const existingSubCategories = (document.subCategories as any[])
-                ?.map((sub) => sub._ref)
-                .filter(Boolean);
-
-              return {
-                filter: "_id != $id && !(_id in $existingSubCategories)",
-                params: {
-                  id: document._id,
-                  existingSubCategories: existingSubCategories || [],
-                },
-              };
-            },
-          },
-        },
-      ],
+      of: [{ type: "image", options: { hotspot: true } }],
     }),
   ],
   preview: {
     select: {
       title: "title",
       subtitle: "description",
+      media: "images",
     },
     prepare({ title, subtitle }) {
       return {

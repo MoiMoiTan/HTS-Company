@@ -159,30 +159,24 @@ export type PRODUCT_BY_SLUG_QUERYResult = null;
 // Query: *[_type == "category" && !(_id in *[_type == "category"].subCategories[]._ref)] | order(title asc) {        _id,        title,        "slug": slug.current,        ...,        "subCategories": subCategories[]->{          _id,          title,          "slug": slug.current,          description,          ...      }    }
 export type CATEGORIES_QUERYResult = Array<{
   _id: string;
-  title?: string;
-  slug?: Slug;
   _type: "category";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  title?: string;
+  slug?: Slug;
   description?: string;
-  subCategories: Array<{
-    _id: string;
-    title?: string;
-    slug?: Slug;
-    description?: string;
-    _type: "category";
-    _createdAt: string;
-    _updatedAt: string;
-    _rev: string;
-    subCategories?: Array<{
+  image?: {
+    asset?: {
       _ref: string;
       _type: "reference";
       _weak?: boolean;
-      _key: string;
-      [internalGroqTypeReferenceTo]?: "category";
-    }>;
-  }> | null;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
 }>;
 // Variable: MY_ORDERS_QUERY
 // Query: *[_type == 'order' && clerkUserId == $userId] | order(orderDate desc) {      _id,      customerName,      email,      orderDate,      totalPrice,      currency,      status,      invoice,      amountDiscount,      address,      phoneNumber,      products[] {        quantity,        product-> {          _id,          name,          price,          discount,          images        }      }    }

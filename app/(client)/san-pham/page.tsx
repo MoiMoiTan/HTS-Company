@@ -1,20 +1,87 @@
-// app/[categorySlug]/page.tsx
+"use client";
 
-// QUAN TRỌNG: Phiên bản này đã được đơn giản hóa, không nhận params
-// để đảm bảo component render thành công.
+import { useEffect, useState } from "react";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
+import Image from "next/image";
+import Link from "next/link";
+import Container from "@/components/Container";
+import Loading from "@/components/Loading";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
-export default function CategoryPage() {
-  // Chỉ render JSX tĩnh để đảm bảo component là hợp lệ
+interface Category {
+  _id: string;
+  title: string;
+  slug: {
+    current: string;
+  };
+  description: string;
+  images?: unknown[];
+}
+
+export default function ProductsPage() {
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const query = `*[_type == "category"] {
+          _id,
+          title,
+          slug,
+          description,
+          images
+        }`;
+
+        const data = await client.fetch(query);
+        setCategories(data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
-    <div className="container mx-auto px-4 py-16 text-center">
-      <h1 className="text-4xl font-bold mb-4">Trang Category - Gỡ Lỗi</h1>
-      <p className="text-lg text-gray-600">
-        Nếu bạn thấy trang này, nghĩa là hệ thống định tuyến (routing) đã hoạt
-        động chính xác.
-      </p>
-      <div className="mt-8 p-4 bg-gray-100 inline-block rounded-md">
-        <p>Component đã được render thành công!</p>
+    <Container className="py-12">
+      <h1 className="text-3xl font-bold mb-8 text-center">
+        Sản phẩm của chúng tôi
+      </h1>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {categories.map((category) => (
+          <Link
+            key={category._id}
+            href={`/san-pham/${category.slug.current}`}
+            className="group"
+          >
+            <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 group-hover:shadow-xl flex flex-col h-full">
+              <div className="relative h-64 w-full bg-gray-200">
+                {Array.isArray(category.images) && category.images[0] ? (
+                  <Image
+                    src={urlFor(category.images[0] as SanityImageSource).url()}
+                    alt={category.title}
+                    fill
+                    className="object-cover"
+                  />
+                ) : null}
+              </div>
+              <div className="p-4 flex flex-col flex-grow">
+                <h2 className="text-xl font-semibold mb-2">{category.title}</h2>
+                <p className="text-gray-600 text-sm">{category.description}</p>
+              </div>
+            </div>
+          </Link>
+        ))}
       </div>
-    </div>
+    </Container>
   );
 }

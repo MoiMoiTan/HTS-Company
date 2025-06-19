@@ -5,113 +5,25 @@ import TiltedCard from "@/components/TiltedCard";
 import Image from "next/image";
 import HTSLogo from "@/images/icon/logo.png";
 import HoptacHTSBg from "@/images/DichVuHILO.png";
-import NguyenDucTungImg from "@/images/giamdoc/Nguyen-Duc-Tung.png";
-import NguyenVanSonImg from "@/images/giamdoc/Nguyen-Van-Son.png";
-import NgoAnhDungImg from "@/images/giamdoc/Ngo-Anh-Dung.png";
-import VuManhHaImg from "@/images/giamdoc/Vu-Manh-Ha.png";
-import LeThanhDatImg from "@/images/giamdoc/Le-Thanh-Dat.png";
-import BuiDinhThangImg from "@/images/giamdoc/Bui-Dinh-Thang.png";
-import AboutContent from "@/components/AboutContent";
 import VietnamMap from "@/images/map.png";
 import HTSIconWeb from "@/images/icon/icon.png";
-
-const links = [
-  { text: "Về Chúng Tôi", href: "/about", isPrimary: true },
-  { text: "HILO Shop", href: "https://Hiloshop.vn/" },
-  {
-    text: "Doanh Nghiệp 4.0",
-    href: "https://HILO.com.vn/pages/dich-vu-doanh-nghiep-4-0",
-  },
-  { text: "HILO Invoice", href: "https://Hiloinvoice.vn/" },
-  { text: "HILO CA", href: "https://HILO-ca.vn/" },
-  { text: "Liên Hệ", href: "/contact" },
-];
-
-const giamdoc = [
-  {
-    imageSrc: NguyenDucTungImg,
-    name: "Ông Nguyễn Đức Tùng",
-    title: "Chủ tịch Hội Đồng Quản Trị",
-  },
-  {
-    imageSrc: NguyenVanSonImg,
-    name: "Ông Nguyễn Văn Sơn",
-    title: "Phó Tổng Giám Đốc",
-  },
-  {
-    imageSrc: NgoAnhDungImg,
-    name: "Ngô Anh Dũng",
-    title: "Giám Đốc Khối Kinh Doanh Tổng Hợp",
-  },
-  {
-    imageSrc: VuManhHaImg,
-    name: "Ông Vũ Mạnh Hà",
-    title: "Giám Đốc Chi nhánh Hải Dương",
-  },
-  {
-    imageSrc: LeThanhDatImg,
-    name: "Ông Lê Thành Đạt",
-    title: "Phó Giám Đốc Chi nhánh Hồ Chí Minh, Phó Tổng Giám Đốc",
-  },
-  {
-    imageSrc: BuiDinhThangImg,
-    name: "Ông Bùi Đình Thắng",
-    title: "Giám Đốc Khối Sản Xuất và Kinh Doanh Dịch Vụ Chữ Ký Số",
-  },
-];
+import AboutContent from "@/components/AboutContent";
+import {
+  ABOUT_LINKS,
+  GIAM_DOC,
+  OFFICE_LOCATIONS,
+  CAPABILITIES,
+  SOLUTIONS,
+  PRODUCTS,
+} from "@/constants/index";
 
 const AboutPage = () => {
-  const officeLocations = [
-    "Thủ đô Hà Nội",
-    "Tỉnh Hải Dương",
-    "Thành phố Hồ Chí Minh",
-  ];
-
-  const capabilities = [
-    "10+ Sản phẩm",
-    "30.000 Khách hàng",
-    "100+ Nhân sự",
-    "10 Năm kinh nghiệm",
-    "Tổ chức T-VAN",
-    "Thành viên Hiệp Hội An Toàn Thông Tin",
-    "Tiêu chuẩn ISO 27001:2013",
-    "Tiêu chuẩn ISO 9001:2015",
-    "Nền Tảng Quản Trị Doanh Nghiệp Toàn Diện",
-  ];
-
-  const solutions = [
-    "Số Hóa Và Lưu Trữ Hồ Sơ Số",
-    "Hóa Đơn Điện Tử",
-    "Chữ Ký Số",
-    "Hợp Đồng Điện Tử",
-    "Lưu Trữ Và Xử Lý Dữ Liệu",
-    "Hạ Tầng Trung Tâm Dữ liệu",
-    "Ảo Hóa Và Tích Hợp Cloud",
-    "Hạ Tầng Mạng",
-    "Giao Thông Thông Minh",
-    "Hệ thống hoạch định nguồn lực",
-    "Hệ thống điều hành văn bản",
-    "Văn phòng điều hành điện tử",
-    "Quản lý và chăm sóc khách hàng",
-    "Quản lý thông tin nhân sự",
-    "Hệ thống định danh điện tử",
-  ];
-
-  const products = [
-    "HILO Invoice",
-    "HILO iVan",
-    "HILO eContract",
-    "HILO Care",
-    "HILO HUD",
-    "HILO CA",
-  ];
-
   return (
     <>
       <Container className="max-w-6xl lg:px-8 py-12">
         <div className="bg-white p-4 rounded-lg mt-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-            {links.slice(0, 8).map((link, index) => (
+            {ABOUT_LINKS.slice(0, 8).map((link, index) => (
               <Link
                 key={index}
                 href={link.href}
@@ -153,7 +65,7 @@ const AboutPage = () => {
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {giamdoc.map((person, index) => (
+            {GIAM_DOC.map((person, index) => (
               <div key={index} className="text-center">
                 <TiltedCard
                   imageSrc={person.imageSrc}
@@ -189,7 +101,6 @@ const AboutPage = () => {
           </p>
 
           <div className="relative w-full max-w-4xl mx-auto h-[400px] flex items-center justify-center">
-            {/* Background image for connections */}
             <Image
               src={HoptacHTSBg}
               alt="Hệ sinh thái HTS"
@@ -198,7 +109,6 @@ const AboutPage = () => {
               className="object-contain z-0"
             />
 
-            {/* Corner Text Boxes */}
             <div className="absolute top-[24px] left-[24px] p-4 bg-white rounded-lg shadow-lg text-gray-800 font-semibold z-20">
               Tích hợp hệ thống
             </div>
@@ -263,7 +173,7 @@ const AboutPage = () => {
               <h3 className="text-xl font-bold text-gray-900">VĂN PHÒNG</h3>
             </div>
             <ul className="space-y-2">
-              {officeLocations.map((item, index) => (
+              {OFFICE_LOCATIONS.map((item, index) => (
                 <li key={index} className="flex items-start">
                   <span className="text-lg font-bold mr-2 mt-0 leading-none text-orange-500">
                     &#8226;
@@ -286,7 +196,7 @@ const AboutPage = () => {
               <h3 className="text-xl font-bold text-gray-900">NĂNG LỰC</h3>
             </div>
             <ul className="space-y-2">
-              {capabilities.map((item, index) => (
+              {CAPABILITIES.map((item, index) => (
                 <li key={index} className="flex items-start">
                   <span className="text-lg font-bold mr-2 mt-0 leading-none text-orange-500">
                     &#8226;
@@ -309,7 +219,7 @@ const AboutPage = () => {
               <h3 className="text-xl font-bold text-gray-900">GIẢI PHÁP</h3>
             </div>
             <ul className="space-y-2">
-              {solutions.map((item, index) => (
+              {SOLUTIONS.map((item, index) => (
                 <li key={index} className="flex items-start">
                   <span className="text-lg font-bold mr-2 mt-0 leading-none text-orange-500">
                     &#8226;
@@ -332,7 +242,7 @@ const AboutPage = () => {
               <h3 className="text-xl font-bold text-gray-900">SẢN PHẨM</h3>
             </div>
             <ul className="space-y-2">
-              {products.map((item, index) => (
+              {PRODUCTS.map((item, index) => (
                 <li key={index} className="flex items-start">
                   <span className="text-lg font-bold mr-2 mt-0 leading-none text-orange-500">
                     &#8226;

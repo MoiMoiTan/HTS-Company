@@ -2,37 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import taiLieu1 from "@/images/tailieu1.png";
-import taiLieu2 from "@/images/tailieu2.png";
-import taiLieu3 from "@/images/tailieu3.png";
-import taiLieu4 from "@/images/tailieu4.png";
-
-const items = [
-  {
-    image: taiLieu1,
-    title: "Công nghệ",
-    desc: "HTS là đối tác chiến lược quan trọng về tư vấn, đào tạo, triển khai chuyển đổi số của các tập đoàn, tổ chức hàng đầu trên thế giới và tại Việt Nam trong nhiều lĩnh vực.",
-    link: "/he-sinh-thai-HTS/cong-nghe",
-  },
-  {
-    image: taiLieu2,
-    title: "Viễn thông",
-    desc: "Chúng tôi không ngừng đầu tư, triển khai và tích hợp ngày càng nhiều các dịch vụ giá trị gia tăng trên cùng một đường truyền Internet và kiến tạo hệ sinh thái truyền thông số.",
-    link: "/he-sinh-thai-HTS/vien-thong",
-  },
-  {
-    image: taiLieu3,
-    title: "Giáo dục",
-    desc: "Là thương hiệu giáo dục có tầm ảnh hưởng quốc tế, Tổ chức Giáo dục HTS đã mở rộng đầy đủ các cấp học góp phần cung cấp nguồn nhân lực chất lượng cao cho thị trường.",
-    link: "/he-sinh-thai-HTS/giao-duc",
-  },
-  {
-    image: taiLieu4,
-    title: "Công ty thành viên",
-    desc: "Công ty thành viên với các lĩnh vực kinh doanh đặc trưng là thành tố quan trọng cấu thành hệ sinh thái HTS, khẳng định sức mạnh tổng thể của HTS.",
-    link: "/he-sinh-thai-HTS/cong-ty-thanh-vien",
-  },
-];
+import { items } from "@/constants/index";
 
 export default function EcosystemSection() {
   return (

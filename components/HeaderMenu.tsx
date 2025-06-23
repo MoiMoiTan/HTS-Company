@@ -6,39 +6,7 @@ import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { getAllCategories, CATEGORIES_QUERYResult } from "@/sanity/lib/client";
-
-const navLinks = [
-  { title: "Trang chủ", href: "/" },
-  {
-    title: "Về HTS",
-    href: "/about",
-    subLinks: [
-      {
-        title: "Liên Hệ Với Chúng Tôi",
-        href: "/contact",
-      },
-      {
-        title: "Câu Hỏi Thường Gặp",
-        href: "/faqs",
-      },
-      {
-        title: "Chính Sách Bảo Mật",
-        href: "/privacy",
-      },
-      {
-        title: "Điều Khoản Và Điều Kiện",
-        href: "/terms",
-      },
-    ],
-  },
-  {
-    title: "Sản Phẩm",
-    href: "/san-pham",
-    isProduct: true,
-  },
-  { title: "Tin tức", href: "/tin-tuc" },
-  { title: "Cơ Hội Nghề Nghiệp", href: "/co-hoi-nghe-nghiep" },
-];
+import { navLinks } from "@/constants/index";
 
 const HeaderMenu = () => {
   const pathname = usePathname();
@@ -49,7 +17,7 @@ const HeaderMenu = () => {
   }, []);
 
   return (
-    <nav className="flex h-full items-center gap-4 text-sm font-semibold text-gray-700">
+    <nav className="hidden md:flex h-full items-center gap-4 text-sm font-semibold text-gray-700">
       {navLinks.map((link) => {
         if (link.title === "Sản Phẩm") {
           return (

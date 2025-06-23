@@ -4,12 +4,10 @@ import { newsData, NewsItem, ContentBlock } from "@/constants/newData";
 import Image from "next/image";
 
 interface NewPapersProps {
-  newsId?: string; // Prop để nhận ID bài viết
+  newsId?: string;
 }
 
-// Component này sẽ là khung cho một bài viết chi tiết
 const NewPapers = ({ newsId }: NewPapersProps) => {
-  // Tìm bài viết theo newsId, nếu không có thì lấy bài đầu tiên
   const newsItem: NewsItem | undefined = newsId
     ? newsData.find((item: NewsItem) => item.id === newsId)
     : newsData[0];
@@ -83,7 +81,6 @@ const NewPapers = ({ newsId }: NewPapersProps) => {
   return (
     <article className="py-16 md:py-24 bg-white">
       <div className="max-w-4xl mx-auto px-4">
-        {/* --- TIÊU ĐỀ VÀ THÔNG TIN BÀI VIẾT --- */}
         <header className="text-center mb-12">
           <h1 className="text-4xl md:text-3xl font-bold text-gray-900 tracking-tight">
             {newsItem.title}
@@ -99,8 +96,6 @@ const NewPapers = ({ newsId }: NewPapersProps) => {
             </div>
           </div>
         </header>
-
-        {/* --- ẢNH ĐẠI DIỆN --- */}
         <div className="mb-12 text-center">
           <Image
             src={newsItem.imageUrl}
@@ -111,8 +106,6 @@ const NewPapers = ({ newsId }: NewPapersProps) => {
             priority
           />
         </div>
-
-        {/* --- NỘI DUNG CHÍNH --- */}
         <div className="prose prose-lg max-w-none prose-p:leading-relaxed prose-headings:font-bold prose-headings:text-gray-800 prose-blockquote:border-orange-400 prose-blockquote:text-gray-700 prose-blockquote:pl-4 prose-blockquote:not-italic">
           {newsItem.content.map(renderContentBlock)}
         </div>

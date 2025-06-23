@@ -1,5 +1,3 @@
-// Giả sử đây là file: app/terms/page.tsx
-
 "use client";
 
 import Container from "@/components/Container";
@@ -9,7 +7,6 @@ const TermsPage = () => {
   return (
     <div className="bg-gray-50/50">
       <Container className="max-w-4xl py-16 md:py-24">
-        {/* --- Phần tiêu đề --- */}
         <div className="text-center mb-12 md:mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
             Điều khoản và Điều kiện
@@ -18,8 +15,6 @@ const TermsPage = () => {
             Vì lợi ích của bạn rất quan trong với chúng tôi
           </p>
         </div>
-
-        {/* --- Nội dung chính --- */}
         <div className="space-y-8">
           <section>
             <h2 className="text-2xl font-bold text-gray-800 mb-3">

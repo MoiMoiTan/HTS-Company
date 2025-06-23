@@ -9,16 +9,15 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { faqsData } from "@/constants"; // Giả sử bạn có dữ liệu câu hỏi trong file này
+import { faqsData } from "@/constants";
 import React from "react";
-import Link from "next/link"; // Import Link từ next/link
+import Link from "next/link";
 import { HelpCircle, Mail } from "lucide-react";
 
 const FaqsPage = () => {
   return (
     <div className="bg-gray-50/50 min-h-screen">
       <Container className="py-16 md:py-24">
-        {/* --- Phần tiêu đề và giới thiệu --- */}
         <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
             Các câu hỏi thường gặp
@@ -29,7 +28,6 @@ const FaqsPage = () => {
           </p>
         </div>
 
-        {/* --- Phần Accordion --- */}
         <div className="mt-12 max-w-3xl mx-auto">
           <Accordion
             type="single"
@@ -54,7 +52,6 @@ const FaqsPage = () => {
           </Accordion>
         </div>
 
-        {/* --- Phần liên hệ hỗ trợ --- */}
         <div className="mt-16 text-center bg-white border border-gray-200 rounded-lg p-8 max-w-3xl mx-auto">
           <div className="flex items-center justify-center w-12 h-12 bg-orange-100 rounded-full mx-auto mb-4">
             <HelpCircle className="w-6 h-6 text-orange-500" />
@@ -67,7 +64,6 @@ const FaqsPage = () => {
             hỗ trợ của chúng tôi.
           </p>
 
-          {/* --- CẬP NHẬT: Sử dụng Link trực tiếp --- */}
           <Link
             href="/contact"
             className="mt-4 inline-flex items-center gap-2 bg-orange-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-orange-600 transition-colors"

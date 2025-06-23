@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { Briefcase, Cpu, Users } from "lucide-react";
 
-const visionItems = [
+export const visionItems = [
   {
     icon: <Briefcase className="h-10 w-10 text-orange-500" />,
     title: "Kinh doanh",
@@ -41,7 +41,7 @@ const StrategicVision = () => {
               toàn diện ở cả ba khía cạnh.
             </p>
             <Link
-              href="https://HTS.com.vn/blogs/news/nghi-dinh-70-2025-nd-cp-sua-doi-mot-so-quy-dinh-lien-quan-den-hoa-don"
+              href="https://Hilo.com.vn/blogs/news/nghi-dinh-70-2025-nd-cp-sua-doi-mot-so-quy-dinh-lien-quan-den-hoa-don"
               className="inline-block bg-orange-500 text-white font-semibold px-8 py-3 rounded-md hover:bg-orange-600 transition-colors duration-300"
             >
               XEM THÊM

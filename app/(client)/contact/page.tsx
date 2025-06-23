@@ -4,16 +4,12 @@ import Container from "@/components/Container";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import React from "react";
-
-// Import các icon cần thiết
 import { Mail, Phone, MapPin, Building } from "lucide-react";
 
 const ContactPage = () => {
   return (
     <div className="bg-gray-50/50">
       <Container className="py-16 md:py-24">
-        {/* --- Phần tiêu đề của trang --- */}
-
         <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
             Liên hệ với chúng tôi
@@ -24,10 +20,8 @@ const ContactPage = () => {
           </p>
         </div>
 
-        {/* --- Bảng nội dung chính --- */}
         <div className="mt-16 max-w-5xl mx-auto bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2">
-            {/* --- Cột bên trái: Thông tin liên hệ --- */}
             <div className="p-8 md:p-12 bg-orange-400 text-white">
               <h2 className="text-2xl font-bold mb-2">Thông tin liên hệ</h2>
               <p className="mb-8 opacity-90">
@@ -80,7 +74,6 @@ const ContactPage = () => {
               </div>
             </div>
 
-            {/* --- Cột bên phải: Form liên hệ --- */}
             <div className="p-8 md:p-12">
               <h2 className="text-2xl font-bold text-gray-800 mb-6">
                 Gửi tin nhắn cho chúng tôi
@@ -118,7 +111,6 @@ const ContactPage = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  {/* Sửa lại label cho đúng */}
                   <label
                     htmlFor="message"
                     className="text-sm font-medium text-gray-700"

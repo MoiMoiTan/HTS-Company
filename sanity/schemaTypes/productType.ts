@@ -54,6 +54,11 @@ export const productType = defineType({
       name: "discount",
       title: "Discount",
       type: "number",
+      components: {
+        input: NumberWithSeparatorInput,
+      },
+      description: "Enter the Price: 1.000.000",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "categories",

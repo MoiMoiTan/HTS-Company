@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 
-// Sửa lại interface: Loại bỏ prop `showMobileWarning` không sử dụng
 interface TiltedCardProps {
   imageSrc: string | StaticImageData;
   altText?: string;

@@ -1,5 +1,3 @@
-// Giả sử đây là file: app/privacy/page.tsx
-
 "use client";
 
 import Container from "@/components/Container";
@@ -9,7 +7,6 @@ const PrivacyPage = () => {
   return (
     <div className="bg-gray-50/50">
       <Container className="max-w-4xl py-16 md:py-24">
-        {/* --- Phần tiêu đề --- */}
         <div className="text-center mb-12 md:mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
             Chính sách bảo mật
@@ -18,16 +15,11 @@ const PrivacyPage = () => {
             Sự riêng tư của bạn rất quan trọng đối với chúng tôi.
           </p>
         </div>
-
-        {/* --- Nội dung chính sách --- */}
-        {/* Sử dụng space-y-8 để tăng khoảng cách giữa các mục */}
         <div className="space-y-8">
           <section>
-            {/* Tiêu đề mục: Cỡ chữ to hơn, đậm hơn */}
             <h2 className="text-2xl font-bold text-gray-800 mb-3">
               1. Thu thập thông tin
             </h2>
-            {/* Nội dung: Tăng độ tương phản và khoảng cách dòng */}
             <p className="text-base text-gray-700 leading-relaxed">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint aut
               voluptates consequatur quisquam assumenda vel labore beatae

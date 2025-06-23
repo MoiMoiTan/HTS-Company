@@ -3,8 +3,6 @@
 import Image from "next/image";
 import { useState } from "react";
 import { PlayCircle, XCircle } from "lucide-react";
-
-// Đảm bảo bạn có file ảnh này trong thư mục '@/images/banner/'
 import madeByHTSDiagram from "@/images/MadeByHTS.png";
 
 export default function MadeByHTSSection() {
@@ -24,8 +22,6 @@ export default function MadeByHTSSection() {
             priority
           />
         </div>
-
-        {/* Nội dung bên phải */}
         <div className="w-full md:w-1/2 text-center md:text-left">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             Made by HTS

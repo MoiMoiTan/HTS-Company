@@ -17,7 +17,7 @@ const data: Props[] = [
   },
   {
     title: "Gọi Chúng Tôi",
-    subtitle: "1900 2929 62",
+    subtitle: "0901.355.688",
     icon: (
       <Phone className="text-gray-600 group-hover:text-darkColor transition-colors" />
     ),
@@ -31,7 +31,7 @@ const data: Props[] = [
   },
   {
     title: "Email",
-    subtitle: "info@dichvutincay.com",
+    subtitle: "thangbd@hilo.com.vn",
     icon: (
       <MapPin className="text-gray-600 group-hover:text-darkColor transition-colors" />
     ),

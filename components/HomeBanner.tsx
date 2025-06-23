@@ -2,25 +2,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link"; // Import Link from next/link
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import img6 from "@/images/banner/background-1.png";
-import img2 from "@/images/banner/giai-phap.png";
-import img4 from "@/images/banner/ke-hop-tac.png";
-
-const slides = [
-  {
-    image: img2,
-    title: "HILO-CA: Giải pháp chữ ký số an toàn, nhanh chóng",
-    desc: "HILO-CA mang đến giải pháp ký số tiện lợi, bảo mật, đáp ứng mọi nhu cầu giao dịch điện tử với tính pháp lý cao.",
-    button: "XEM THÊM",
-  },
-  {
-    image: img4,
-    title: "Ký kết hợp tác phát triển giải pháp số hóa",
-    desc: "HILO ký kết hợp tác với nhiều doanh nghiệp lớn, thúc đẩy chuyển đổi số, quản lý hồ sơ lưu trữ hiệu quả.",
-    button: "XEM THÊM",
-  },
-];
+import { slides } from "@/constants/index";
 
 const HomeBanner = () => {
   const [index, setIndex] = useState(0);
@@ -103,9 +88,16 @@ const HomeBanner = () => {
                 </p>
               </div>
               <div>
-                <button className="bg-orange-400 hover:bg-orange-500 text-white font-semibold px-6 py-2 rounded transition">
-                  {slides[index].button}
-                </button>
+                {slides[index].Link && (
+                  <Link
+                    href={slides[index].Link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-orange-400 hover:bg-orange-500 text-white font-semibold px-6 py-2 rounded transition"
+                  >
+                    XEM THÊM
+                  </Link>
+                )}
               </div>
             </div>
           </motion.div>

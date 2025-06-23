@@ -149,7 +149,21 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | SanityAssetSourceData | Category | Slug;
+export type Product = {
+  _id: string;
+  name: string;
+  slug: { current: string };
+  images?: any[];
+  intro?: string;
+  price?: number;
+  discount?: number;
+  status?: string;
+  description?: string;
+  stock?: number;
+  variant?: any;
+};
+
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | SanityAssetSourceData | Category | Slug | Product;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/helpers/queries.ts
 // Variable: PRODUCT_BY_SLUG_QUERY

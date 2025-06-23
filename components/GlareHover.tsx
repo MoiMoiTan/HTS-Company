@@ -56,9 +56,6 @@ const GlareHover: React.FC<GlareHoverProps> = ({
 
     el.style.transition = "none";
     el.style.backgroundPosition = "-100% -100%, 0 0";
-
-    // --- SỬA LỖI TẠI ĐÂY ---
-    // Sử dụng toán tử `void` để báo cho linter biết chúng ta cố ý không dùng giá trị trả về
     void el.offsetHeight;
 
     el.style.transition = `${transitionDuration}ms ease`;

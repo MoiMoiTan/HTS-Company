@@ -1,34 +1,10 @@
-// Tên file ví dụ: app/tuyen-dung/page.tsx
-
 "use client";
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { cn } from "@/lib/utils"; // Giả sử bạn có file utils này
-
-// --- COMPONENT HELPER ---
-// Component Container để căn giữa nội dung, giúp code gọn gàng hơn
-const Container = ({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => {
-  return (
-    <div className={cn("max-w-7xl mx-auto px-4 sm:px-6 lg:px-8", className)}>
-      {children}
-    </div>
-  );
-};
-
-// --- IMPORT HÌNH ẢNH ---
-// Hãy đảm bảo các đường dẫn này chính xác với cấu trúc dự án của bạn
+import { cn } from "@/lib/utils";
 import banner from "@/images/jobs/banner.png";
 import moiTruongLamViecImage from "@/images/jobs/moi-truong-lam-viec.png";
-
-// --- IMPORT ICONS ---
-// Cần cài đặt: npm install lucide-react
 import {
   Users,
   Cpu,
@@ -45,21 +21,29 @@ import {
   Handshake,
 } from "lucide-react";
 
-// --- COMPONENT CHÍNH CỦA TRANG ---
-const RecruitmentPage = () => {
-  // Sửa lỗi Hydration: Bắt đầu state với null
-  const [activeTab, setActiveTab] = useState<string | null>(null);
+const Container = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <div className={cn("max-w-7xl mx-auto px-4 sm:px-6 lg:px-8", className)}>
+      {children}
+    </div>
+  );
+};
 
-  // Sửa lỗi Hydration: Chỉ đặt tab mặc định sau khi component đã render ở client
+const RecruitmentPage = () => {
+  const [activeTab, setActiveTab] = useState<string | null>(null);
   useEffect(() => {
     setActiveTab("chinh-sach-lao-dong");
-  }, []); // Mảng phụ thuộc rỗng đảm bảo useEffect chỉ chạy một lần sau lần render đầu tiên
+  }, []);
 
   const handleTabClick = (tabId: string) => {
     setActiveTab(tabId);
   };
-
-  // Sửa lỗi Hydration: Hiển thị trạng thái tải trong khi chờ client xác định tab
   if (!activeTab) {
     return (
       <div className="flex h-screen w-full items-center justify-center">
@@ -70,7 +54,6 @@ const RecruitmentPage = () => {
 
   return (
     <div>
-      {/* --- PHẦN BANNER --- */}
       <div className="relative w-full overflow-hidden py-12 min-h-[50vh] flex items-center justify-center text-center">
         <Image
           src={banner}
@@ -91,7 +74,6 @@ const RecruitmentPage = () => {
       </div>
 
       <Container className="py-12 md:py-16">
-        {/* --- PHẦN THANH ĐIỀU HƯỚNG TAB --- */}
         <div className="flex justify-center border-b border-gray-200 mb-10 md:mb-12">
           <div className="flex flex-wrap justify-center -mb-px">
             <button
@@ -126,10 +108,7 @@ const RecruitmentPage = () => {
             </button>
           </div>
         </div>
-
-        {/* --- NỘI DUNG CÁC TAB --- */}
         <div>
-          {/* == TAB 1: CHÍNH SÁCH LAO ĐỘNG (BỐ CỤC NÂNG CAO) == */}
           {activeTab === "chinh-sach-lao-dong" && (
             <section id="chinh-sach-lao-dong">
               <div className="mb-16">
@@ -142,7 +121,6 @@ const RecruitmentPage = () => {
                   cơ hội phát triển tối đa tiềm năng.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {/* Card item */}
                   <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow border">
                     <div className="flex items-center justify-center w-12 h-12 bg-orange-100 rounded-full mb-4">
                       <Users className="w-6 h-6 text-orange-500" />
@@ -179,7 +157,6 @@ const RecruitmentPage = () => {
                       nghiệp vụ đáp ứng nhu cầu công việc.
                     </p>
                   </div>
-                  {/* Card item */}
                   <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow border">
                     <div className="flex items-center justify-center w-12 h-12 bg-orange-100 rounded-full mb-4">
                       <Award className="w-6 h-6 text-orange-500" />
@@ -190,7 +167,6 @@ const RecruitmentPage = () => {
                       lý, lãnh đạo, phục vụ phát triển dài hạn.
                     </p>
                   </div>
-                  {/* Card item */}
                   <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow border">
                     <div className="flex items-center justify-center w-12 h-12 bg-orange-100 rounded-full mb-4">
                       <Lightbulb className="w-6 h-6 text-orange-500" />
@@ -203,7 +179,6 @@ const RecruitmentPage = () => {
                       năng qua các nền tảng học tập trực tuyến.
                     </p>
                   </div>
-                  {/* Card item */}
                   <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow border">
                     <div className="flex items-center justify-center w-12 h-12 bg-orange-100 rounded-full mb-4">
                       <Rocket className="w-6 h-6 text-orange-500" />
@@ -279,8 +254,6 @@ const RecruitmentPage = () => {
               </div>
             </section>
           )}
-
-          {/* == TAB 2: QUY TRÌNH TUYỂN DỤNG (BỐ CỤC NÂNG CAO) == */}
           {activeTab === "quy-trinh-tuyen-dung" && (
             <section id="quy-trinh-tuyen-dung">
               <h2 className="text-3xl font-bold text-gray-800 mb-12 text-center">
@@ -366,8 +339,6 @@ const RecruitmentPage = () => {
               </div>
             </section>
           )}
-
-          {/* == TAB 3: VỊ TRÍ ĐANG TUYỂN DỤNG (GIỮ NGUYÊN) == */}
           {activeTab === "tuyen-dung" && (
             <section id="tuyen-dung">
               <h2 className="text-3xl font-bold text-gray-800 mb-10 text-center">

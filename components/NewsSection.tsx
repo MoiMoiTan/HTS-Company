@@ -1,33 +1,7 @@
 // components/NewsSection.tsx
 import Image from "next/image";
 import Link from "next/link";
-import new1 from "@/images/TinTuc1.png";
-import new2 from "@/images/TinTuc2.png";
-import new3 from "@/images/TicTuc3.png";
-
-const items = [
-  {
-    image: new2,
-    title:
-      "Thông báo về ngày chốt danh sách cổ đông để thực hiện quyền mua cổ phần",
-    date: "10/06/2025",
-    link: "https://hilo.com.vn/blogs/news/thong-bao-ngay-chot-danh-sach-co-dong-de-thuc-hien-quyen-mua-co-phan",
-  },
-  {
-    image: new1,
-    title:
-      "Giải Pháp Hóa Đơn Điện Tử Toàn Diện giúp Hộ Kinh Doanh, Doanh Nghiệp Tự Tin Kinh Doanh Theo Nghị Định 70/2025/NĐ-CP",
-    date: "02/06/2025",
-    link: "https://hilo.com.vn/blogs/news/giai-phap-hoa-don-dien-tu-toan-dien-giup-ho-kinh-doanh-doanh-nghiep-t ",
-  },
-  {
-    image: new3,
-    title:
-      "Hilo công bố trúng thầu Dự Án Chứng Thư Số cho Hệ Thống Hóa Đơn Điện Tử thuộc Ngân Hàng TMCP Đầu Tư Và Phát Triển Việt Nam (BIDV)",
-    date: "10/04/2025",
-    link: "https://hilo.com.vn/blogs/news/hilo-cong-bo-trung-thau-du-an-chung-thu-so-cho-he-thong-hoa-don-dien-t",
-  },
-];
+import { items2 } from "@/constants/index";
 
 export default function NewsSection() {
   return (
@@ -45,7 +19,7 @@ export default function NewsSection() {
           </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {items.map((item, i) => (
+          {items2.map((item, i) => (
             <div
               key={i}
               className="bg-white rounded-xl shadow p-4 flex flex-col h-full"

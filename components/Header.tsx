@@ -1,9 +1,13 @@
+"use client";
 import React from "react";
 import HeaderMenu from "./HeaderMenu";
 import Image from "next/image";
 import Container from "./Container";
 import logoHTS from "@/images/icon/icon.png";
 import Link from "next/link";
+import MobileMenu from "./MobileMenu";
+import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/nextjs";
+import CartIcon from "./CartIcon";
 
 const Header = () => {
   return (
@@ -12,7 +16,7 @@ const Header = () => {
       <div className="bg-blue-800 text-white">
         <Container className="flex h-8 items-center justify-end px-6">
           <p className="text-xs font-semibold tracking-wider">
-            HOTLINE: 1900 2929 62
+            HOTLINE: 0901.355.688
           </p>
         </Container>
       </div>
@@ -20,6 +24,7 @@ const Header = () => {
       {/* Header logo và menu */}
       <div className="bg-white">
         <Container>
+          <MobileMenu />
           <div className="flex h-20 items-center justify-between gap-8 px-2">
             {/* Logo */}
             <Link href="/" passHref>
@@ -33,10 +38,21 @@ const Header = () => {
                 />
               </div>
             </Link>
-
-            {/* Menu điều hướng */}
             <div className="flex h-full flex-1 items-center justify-end">
               <HeaderMenu />
+              <CartIcon />
+              <div className="ml-4">
+                <SignedIn>
+                  <UserButton afterSignOutUrl="/" />
+                </SignedIn>
+                <SignedOut>
+                  <SignInButton mode="modal">
+                    <button className="px-4 py-2 rounded-full bg-orange-400 text-white font-semibold hover:bg-orange-600 transition">
+                      Đăng nhập
+                    </button>
+                  </SignInButton>
+                </SignedOut>
+              </div>
             </div>
           </div>
         </Container>

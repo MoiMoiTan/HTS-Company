@@ -2,14 +2,13 @@
 
 import Container from "@/components/Container";
 import NewPapers from "@/components/NewPapers";
-import NewsListPage from "./danh-sach/page"; // Import trang danh sách tin tức
+import NewsListPage from "./danh-sach/page";
 import React, { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
-// Tạo một component con để sử dụng useSearchParams
 const NewsContent = () => {
   const searchParams = useSearchParams();
-  const newsId = searchParams.get("id"); // Lấy ID bài viết từ query parameter 'id'
+  const newsId = searchParams.get("id");
 
   return newsId ? <NewPapers newsId={newsId} /> : <NewsListPage />;
 };

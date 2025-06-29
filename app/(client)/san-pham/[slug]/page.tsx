@@ -5,6 +5,8 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { ArrowRight, ImageIcon } from "lucide-react";
+import bannerSanpham from "@/images/banner-sanpham.png";
+import { px } from "framer-motion";
 
 interface Product {
   _id: string;
@@ -69,27 +71,34 @@ export default async function CategoryDetailPage({ params }: { params: any }) {
   const { title, description, image, products } = categoryData;
 
   return (
-    <div className="bg-gray-50/70">
-      <Container className="py-16 md:py-24">
-        <header className="relative h-80 md:h-96 rounded-2xl overflow-hidden mb-12 md:mb-16 bg-gray-300">
-          {image ? (
-            <Image
-              src={urlFor(image).url()}
-              alt={title}
-              fill
-              className="object-cover brightness-50"
-              priority
-            />
-          ) : null}
-          <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center text-white p-4">
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
-              {title}
-            </h1>
-            <p className="mt-4 text-lg max-w-2xl">{description}</p>
-          </div>
-        </header>
+    <div className="bg-gray-100 min-h-screen">
+      {/* Banner Header */}
+      <div className="w-full flex justify-center mt-6 mb-0">
+        <div className="w-full max-w-5xl rounded-3xl shadow-lg overflow-hidden">
+          <Image
+            src={bannerSanpham}
+            alt="Banner Sản phẩm"
+            width={bannerSanpham.width}
+            height={bannerSanpham.height}
+            className="w-full h-auto object-cover"
+            priority
+            sizes="100vw"
+          />
+        </div>
+      </div>
+      <div className="w-full flex flex-col items-center justify-center text-center mt-8 mb-8 px-4">
+        <h1 className="text-5xl md:text-6xl font-extrabold text-hts-orange-main drop-shadow-sm">
+          {title}
+        </h1>
+        <span className="inline-block w-20 h-1 rounded-full bg-hts-orange-main mt-4"></span>
+      </div>
+      {/* Divider trang trí */}
+      <div className="flex justify-center mt-16 mb-4">
+        <span className="inline-block w-24 h-1 rounded-full bg-gradient-to-r from-orange-400 via-purple-400 to-blue-400 opacity-80 animate-pulse"></span>
+      </div>
+      <Container className="py-12 md:py-16">
         {products && products.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 xl:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 xl:grid-cols- gap-8">
             {products.map((product) => (
               <Link
                 key={product._id}

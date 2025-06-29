@@ -11,7 +11,7 @@ const Loading = () => {
         <motion.div
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
-          className="flex items-center space-x-2 text-green-600"
+          className="flex items-center space-x-2 text-orange-600"
         >
           <Loader2 className="animate-spin" />
           <span className="font-semibold tracking-wide">HTS is loading...</span>

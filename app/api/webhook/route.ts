@@ -15,6 +15,11 @@ interface ShippingAddress {
   phone?: string;
 }
 
+interface OrderItem {
+  id: string;
+  quantity: number;
+}
+
 export const config = {
   api: {
     bodyParser: false,
@@ -74,7 +79,7 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
       }
 
       // Tạo invoice item
-      const invoiceItem = await stripe.invoiceItems.create({
+      await stripe.invoiceItems.create({
         customer: customer,
         amount: paymentIntent.amount,
         currency: paymentIntent.currency,
@@ -92,12 +97,12 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
       });
 
       // Finalize invoice
-      if (invoice.status === 'draft') {
+      if (invoice.status === 'draft' && invoice.id) {
         invoice = await stripe.invoices.finalizeInvoice(invoice.id);
       }
       
       // Pay invoice
-      if (invoice.status === 'open') {
+      if (invoice.status === 'open' && invoice.id) {
         invoice = await stripe.invoices.pay(invoice.id);
       }
 
@@ -115,7 +120,7 @@ async function handlePaymentIntentSucceeded(paymentIntent: Stripe.PaymentIntent)
       clerkUserId: metadata.userId || 'anonymous',
       customerName: shippingAddress.name || metadata.customerName || 'Guest',
       email: metadata.email || paymentIntent.receipt_email || 'no-email@example.com',
-      products: orderItems.map((item: any) => ({
+      products: orderItems.map((item: OrderItem) => ({
         _key: Math.random().toString(36).substring(7),
         product: {
           _type: 'reference',
@@ -202,10 +207,11 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ received: true });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Webhook error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json(
-      { error: `Webhook Error: ${error}` },
+      { error: `Webhook Error: ${errorMessage}` },
       { status: 400 }
     );
   }

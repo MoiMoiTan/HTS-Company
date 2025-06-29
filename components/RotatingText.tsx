@@ -8,7 +8,7 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { motion, AnimatePresence, Transition } from "framer-motion";
+import { motion, AnimatePresence, Transition, Variant } from "framer-motion";
 
 // Helper function để nối các class name
 function cn(...classes: (string | undefined | null | boolean)[]): string {
@@ -31,14 +31,13 @@ export interface RotatingTextProps
   > {
   texts: string[];
   transition?: Transition;
-  initial?: any;
-  animate?: any;
-  exit?: any;
+  initial?: Variant;
+  animate?: Variant;
+  exit?: Variant;
   animatePresenceMode?: "sync" | "wait";
   animatePresenceInitial?: boolean;
   rotationInterval?: number;
   staggerDuration?: number;
-  staggerFrom?: "first" | "last" | "center" | "random" | number;
   loop?: boolean;
   auto?: boolean;
   splitBy?: "characters" | "words" | "lines" | string;
@@ -62,7 +61,6 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
       animatePresenceInitial = false,
       rotationInterval = 2500,
       staggerDuration = 0.04,
-      staggerFrom = "first",
       loop = true,
       auto = true,
       onNext,
@@ -109,25 +107,6 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
       }
       return [{ characters: [currentText], needsSpace: false }];
     }, [texts, currentTextIndex, splitBy]);
-
-    const getStaggerDelay = useCallback(
-      (index: number, totalChars: number): number => {
-        const total = totalChars;
-        if (staggerFrom === "first") return index * staggerDuration;
-        if (staggerFrom === "last")
-          return (total - 1 - index) * staggerDuration;
-        if (staggerFrom === "center") {
-          const center = Math.floor(total / 2);
-          return Math.abs(center - index) * staggerDuration;
-        }
-        if (staggerFrom === "random") {
-          const randomIndex = Math.floor(Math.random() * total);
-          return Math.abs(randomIndex - index) * staggerDuration;
-        }
-        return Math.abs((staggerFrom as number) - index) * staggerDuration;
-      },
-      [staggerFrom, staggerDuration]
-    );
 
     const handleIndexChange = useCallback(
       (newIndex: number) => {

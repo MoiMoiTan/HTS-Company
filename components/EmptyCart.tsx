@@ -2,7 +2,6 @@
 import emptyCart from "@/images/emptyCart.png";
 import React from "react";
 import Link from "next/link";
-import { Button } from "./ui/button";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ShoppingCart } from "lucide-react";

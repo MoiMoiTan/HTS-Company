@@ -6,7 +6,6 @@ import Container from "@/components/Container";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { ArrowRight, ImageIcon } from "lucide-react";
 import bannerSanpham from "@/images/banner-sanpham.png";
-import { px } from "framer-motion";
 
 interface Product {
   _id: string;
@@ -50,7 +49,11 @@ async function getCategoryData(slug: string): Promise<CategoryData | null> {
   return data;
 }
 
-export default async function CategoryDetailPage({ params }: { params: any }) {
+export default async function CategoryDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const categoryData = await getCategoryData(slug);
 
@@ -68,7 +71,7 @@ export default async function CategoryDetailPage({ params }: { params: any }) {
     );
   }
 
-  const { title, description, image, products } = categoryData;
+  const { title, products } = categoryData;
 
   return (
     <div className="bg-gray-100 min-h-screen">

@@ -8,9 +8,13 @@ async function getProductBySlug(slug: string) {
   return await client.fetch(query, { slug });
 }
 
-export default async function Page({ searchParams }: { searchParams: any }) {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ slug?: string }>;
+}) {
   const { slug } = await searchParams;
-  const product = await getProductBySlug(slug);
+  const product = await getProductBySlug(slug || "");
 
   if (!product) {
     return (
